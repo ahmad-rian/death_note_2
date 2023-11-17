@@ -65,6 +65,9 @@ if (isset($_POST['submit'])) {
             color :red;
         }
 
+        .required-field {
+            color: red;
+        }
 
         form input {
             width: calc(100% - 20px);
@@ -77,50 +80,77 @@ if (isset($_POST['submit'])) {
             box-sizing: border-box;
         }
 
-        form input[type="submit"] {
-            background-color: #2196F3;
-            color: #fff;
-            cursor: pointer;
+        .footers img {
+            width: 300px; /* Sesuaikan ukuran gambar */
+            height: auto;
+            position: absolute;
+            bottom: 0;
+            
+           
         }
 
-        form input[type="submit"]:hover {
-            background-color: #1565C0;
+        .kiri_bawah {
+            left: 10;
+            
         }
 
-        a {
-            color: #64b5f6;
-            text-decoration: none;
+        .kanan_bawah {
+            right: 0;
+           
         }
-
-        a:hover {
-            text-decoration: underline;
+        .fotoatas {
+            display: block;
+            margin: 0 auto 1px; /* Membuat jarak antara gambar dan form */
+            margin-bottom: -50px;
+            width: 300px; /* Sesuaikan ukuran gambar */
+            height: auto;
+            position: relative; /* Ganti ke 'relative' agar bisa disusun di atas 'container' */
         }
-
-        .fa {
-            margin-right: 5px;
+        .fotosamping{
+            display: block;
+            margin: 0 auto 1px; /* Membuat jarak antara gambar dan form */
+            margin-bottom: -100px;
+            width: 700px; /* Sesuaikan ukuran gambar */
+            height: auto;
+            position: relative; /* Ganti ke 'relative' agar bisa disusun di atas 'container' */
         }
-    </style>
+</style>
 </head>
 
 <body>
-    <form name="login-form" action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" class="login-form">
-        <span>Username</span>
-        <input type="text" name="fullname" required>
-        <span>Nama Lengkap</span>
-        <input type="text" name="username" required>
-        <span>Email</span>
-        <input type="email" name="email" required>
-        <span>Password</span>
-        <input type="password" name="password" required>
-        <span>Konfirmasi Password</span>
-        <input type="password" name="konfir" required>
-        <?php if (isset($password_mismatch_error)) { ?>
-            <span style="color: red;"><?php echo $password_mismatch_error; ?></span>
-        <?php } ?>
-        <span>Already have an account? <a href="login.php">Click here</a></span>
-        <br><input type="submit" name="submit">
-    </form>
-    <script src="https://kit.fontawesome.com/d9b2e6872d.js" crossorigin="anonymous"></script>
+    <img src="register tulisan death note.png" alt="gambar atas" class="fotoatas">
+    <img src="Register kertas atas.png" alt="gambar samping" class="fotosamping">
+    <div class="container">
+    <h1>Selamat Datang!</h1>
+        <p>Ayo mulai mencari target pembunuhan terbaru</p>
+    <div class="register>
+        <form name="login-form" action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" class="login-form">
+            <label for="name">Username</label>  
+            <input type="text" name="fullname" required>
+            <label for="name">Nama Lengkap</label>
+            <input type="text" name="username" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" required>
+            <label for="confirm-password">Konfirmasi Password</label>
+            <input type="password" name="konfir" required>
+            <?php if (isset($password_mismatch_error)) { ?>
+                <span style="color: red;"><?php echo $password_mismatch_error; ?></span>
+            <?php } ?>
+            <button type="submit">Daftar</button>
+        </form>
+     </div>
+    <div class="alternative">
+        <p>Sudah punya akun? <a href="login.php">Masuk</a></p>
+    </div>
+    </div>
+        <script src="https://kit.fontawesome.com/d9b2e6872d.js" crossorigin="anonymous"></script>
+
+    <div class="footers">
+            <img src="register gambar Shikigami.png" alt="gambar mc" class="kiri_bawah">
+            <img src="Register gambar Light.png" alt="gambar shinagami" class="kanan_bawah">
+    </div>
 </body>
 
 </html>
