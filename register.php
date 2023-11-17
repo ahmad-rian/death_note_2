@@ -32,98 +32,150 @@ if (isset($_POST['submit'])) {
 <head>
     <title>Register</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
+         *{
+        margin:0;
+        padding: 0;
+        Width: 100%;
+        }    
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #f4f4f4;
+        background-image: url(Background.png);
+        color: white;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 50px;
+            background-color: rgba(233, 26, 26, 0.1);
+            position: relative;
+        }
+
+    
+    h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    input[type="text"], input[type="email"], input[type="password"] {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+    
+    button[type="submit"] {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: red;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    
+    button[type="submit"]:hover {
+        background-color: #2980b9;
+    }
+    
+    p {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    p a {
+        color: #3498db;
+        text-decoration: none;
+    }
+    
+    p a:hover {
+        text-decoration: underline;
+    }
+    .footers {
+            position: relative;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: url('bg.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
+            justify-content: space-between;
         }
 
-        form {
-            max-width: 400px;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        .footers img {
+            width: 300px; /* Sesuaikan ukuran gambar */
+            height: auto;
+            position: absolute;
+            bottom: 0;
+            
+           
         }
 
-        span {
+        .kiri_bawah {
+            left: 10;
+            
+        }
+
+        .kanan_bawah {
+            right: 0;
+           
+        }
+        .fotoatas {
             display: block;
-            margin-bottom: 10px;
-            color :white;
+            margin: 0 auto 1px; /* Membuat jarak antara gambar dan form */
+            margin-bottom: -50px;
+            width: 300px; /* Sesuaikan ukuran gambar */
+            height: auto;
+            position: relative; /* Ganti ke 'relative' agar bisa disusun di atas 'container' */
         }
-
-        span::after{
-            content:"*";
-            color :red;
+        .fotosamping{
+            display: block;
+            margin: 0 auto 1px; /* Membuat jarak antara gambar dan form */
+            margin-bottom: -100px;
+            width: 700px; /* Sesuaikan ukuran gambar */
+            height: auto;
+            position: relative; /* Ganti ke 'relative' agar bisa disusun di atas 'container' */
         }
-
-        .required-field {
-            color: red;
-        }
-
-        form input {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #666;
-            border-radius: 4px;
-            background-color: #444;
-            color: #fff;
-            box-sizing: border-box;
-        }
-
-        form input[type="submit"] {
-            background-color: #2196F3;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        form input[type="submit"]:hover {
-            background-color: #1565C0;
-        }
-
-        a {
-            color: #64b5f6;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .fa {
-            margin-right: 5px;
-        }
-    </style>
+</style>
 </head>
 
 <body>
-    <form name="login-form" action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" class="login-form">
-        <span>Username</span>
-        <input type="text" name="fullname" required>
-        <span>Nama Lengkap</span>
-        <input type="text" name="username" required>
-        <span>Email</span>
-        <input type="email" name="email" required>
-        <span>Password</span>
-        <input type="password" name="password" required>
-        <span>Konfirmasi Password</span>
-        <input type="password" name="konfir" required>
-        <?php if (isset($password_mismatch_error)) { ?>
-            <span style="color: red;"><?php echo $password_mismatch_error; ?></span>
-        <?php } ?>
-        <span>Already have an account? <a href="login.php">Click here</a></span>
-        <br><input type="submit" name="submit">
-    </form>
-    <script src="https://kit.fontawesome.com/d9b2e6872d.js" crossorigin="anonymous"></script>
+    <img src="register tulisan death note.png" alt="gambar atas" class="fotoatas">
+    <img src="Register kertas atas.png" alt="gambar samping" class="fotosamping">
+    <div class="container">
+    <h1>Selamat Datang!</h1>
+        <p>Ayo mulai mencari target pembunuhan terbaru</p>
+    <div class="register>
+        <form name="login-form" action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" class="login-form">
+            <label for="name">Username</label>  
+            <input type="text" name="fullname" required>
+            <label for="name">Nama Lengkap</label>
+            <input type="text" name="username" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" required>
+            <label for="confirm-password">Konfirmasi Password</label>
+            <input type="password" name="konfir" required>
+            <?php if (isset($password_mismatch_error)) { ?>
+                <span style="color: red;"><?php echo $password_mismatch_error; ?></span>
+            <?php } ?>
+            <button type="submit">Daftar</button>
+        </form>
+     </div>
+    <div class="alternative">
+        <p>Sudah punya akun? <a href="login.php">Masuk</a></p>
+    </div>
+    </div>
+        <script src="https://kit.fontawesome.com/d9b2e6872d.js" crossorigin="anonymous"></script>
+
+    <div class="footers">
+            <img src="register gambar Shikigami.png" alt="gambar mc" class="kiri_bawah">
+            <img src="Register gambar Light.png" alt="gambar shinagami" class="kanan_bawah">
+    </div>
 </body>
 
 </html>
