@@ -54,10 +54,15 @@ if (isset($_POST['submit'])) {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
-        form span {
+        span {
             display: block;
             margin-bottom: 10px;
-            color: #bbdefb;
+            color :white;
+        }
+
+        span::after{
+            content:"*";
+            color :red;
         }
 
         .required-field {
