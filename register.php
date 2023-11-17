@@ -85,6 +85,17 @@ if (isset($_POST['submit'])) {
     button[type="submit"]:hover {
         background-color: #2980b9;
     }
+
+    label{
+        color:white;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    label::after{
+        content:"*";
+        color : red;
+    }
     
     p {
         text-align: center;
