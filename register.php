@@ -32,52 +32,77 @@ if (isset($_POST['submit'])) {
 <head>
     <title>Register</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
+         *{
+        margin:0;
+        padding: 0;
+        Width: 100%;
+        }    
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #f4f4f4;
+        background-image: url(Background.png);
+        color: white;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 50px;
+            background-color: rgba(233, 26, 26, 0.1);
+            position: relative;
+        }
+
+    
+    h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    input[type="text"], input[type="email"], input[type="password"] {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+    
+    button[type="submit"] {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: red;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    
+    button[type="submit"]:hover {
+        background-color: #2980b9;
+    }
+    
+    p {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    p a {
+        color: #3498db;
+        text-decoration: none;
+    }
+    
+    p a:hover {
+        text-decoration: underline;
+    }
+    .footers {
+            position: relative;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: url('bg.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-        }
-
-        form {
-            max-width: 400px;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        span {
-            display: block;
-            margin-bottom: 10px;
-            color :white;
-        }
-
-        span::after{
-            content:"*";
-            color :red;
-        }
-
-        .required-field {
-            color: red;
-        }
-
-        form input {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #666;
-            border-radius: 4px;
-            background-color: #444;
-            color: #fff;
-            box-sizing: border-box;
+            justify-content: space-between;
         }
 
         .footers img {
