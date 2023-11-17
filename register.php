@@ -65,9 +65,6 @@ if (isset($_POST['submit'])) {
             color :red;
         }
 
-        .required-field {
-            color: red;
-        }
 
         form input {
             width: calc(100% - 20px);
