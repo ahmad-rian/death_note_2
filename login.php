@@ -3,34 +3,42 @@ session_start();
 include('connection.php');
 
 if (isset($_POST['submit'])) {
-    $fullname = $_POST['fullname'];
     $username = $_POST['username'];
-    $email = $_POST['email'];
     $password = md5($_POST['password']);
     $konfir = md5($_POST['konfir']);
 
-    $sql = "SELECT * FROM tbl_user WHERE username = '$username' OR email = '$email'";
-    $filter = mysqli_query($conn, $sql);
-    $check = mysqli_num_rows($filter);
+    $query = "SELECT * FROM tbl_user WHERE username = '$username' AND password = '$password'";
+    $result = mysqli_query($conn, $query);
+    $check = mysqli_num_rows($result);
     if ($check > 0) {
-        header('Location:register.php?pesan=eksis');
+        $data = mysqli_fetch_assoc($result);
+        if ($data['level'] == "Administrator") {
+            $_SESSION['username'] = $username;
+            $_SESSION['level'] = "Administrator";
+            header('Location:index.php');
+        } elseif ($data['level'] == "Guest") {
+            $_SESSION['username'] = $username;
+            $_SESSION['level'] = "Guest";
+            header('Location:index.php');
+        } else {
+            if ($password != $konfir) {
+                $password_mismatch_error = "Username atau Password salah";
+                
+            }
+        }
     } else {
         if ($password != $konfir) {
-            $password_mismatch_error = "Password tidak sama";
-        } else {
-            $query = "INSERT INTO tbl_user(fullname, username, email, password, level) VALUES ('$fullname', '$username', '$email', '$password', 'Guest')";
-            $result = mysqli_query($conn, $query);
-            header('Location:login.php?pesan=berhasil');
+            $password_mismatch_error = "Username atau Password salah";
+            
         }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Register</title>
+    <title>Login</title>
     <style>
          *{
         margin:0;
@@ -92,7 +100,7 @@ if (isset($_POST['submit'])) {
     }
     
     p a {
-        color: #3498db;
+        color: white;
         text-decoration: none;
     }
     
@@ -106,10 +114,10 @@ if (isset($_POST['submit'])) {
         }
 
         .footers img {
-            width: 300px; /* Sesuaikan ukuran gambar */
+            width: 150px; /* Sesuaikan ukuran gambar */
             height: auto;
             position: absolute;
-            bottom: 0;
+            bottom: -80px;
             
            
         }
@@ -135,46 +143,56 @@ if (isset($_POST['submit'])) {
             display: block;
             margin: 0 auto 1px; /* Membuat jarak antara gambar dan form */
             margin-bottom: -100px;
-            width: 700px; /* Sesuaikan ukuran gambar */
+            width: 100px; /* Sesuaikan ukuran gambar */
             height: auto;
             position: relative; /* Ganti ke 'relative' agar bisa disusun di atas 'container' */
         }
+        .pakukanan {
+    position: absolute;
+    top: 40px; /* Adjust the distance from the top as needed */
+    right: 280px; /* Adjust the distance from the right as needed */
+    width: 100px;
+    height: auto;
+}
+
+    .pakukiri {
+        position: absolute;
+        top: 30px; /* Adjust the distance from the top as needed */
+        left: 280px; /* Adjust the distance from the left as needed */
+        width: 100px;
+        height: auto;
+}
 </style>
 </head>
 
 <body>
     <img src="register tulisan death note.png" alt="gambar atas" class="fotoatas">
-    <img src="Register kertas atas.png" alt="gambar samping" class="fotosamping">
+    <img src="Login paku kanan.png" alt="gambar samping" class="pakukanan">
+    <img src="Login paku kiri.png" alt="kiri" class="pakukiri">
     <div class="container">
     <h1>Selamat Datang!</h1>
         <p>Ayo mulai mencari target pembunuhan terbaru</p>
-    <div class="register>
+    <div class="register">
         <form name="login-form" action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" class="login-form">
-            <label for="name">Username</label>  
-            <input type="text" name="fullname" required>
-            <label for="name">Nama Lengkap</label>
+            <label for="username">Username</label>  
             <input type="text" name="username" required>
-            <label for="email">Email</label>
-            <input type="email" name="email" required>
             <label for="password">Password</label>
             <input type="password" name="password" required>
-            <label for="confirm-password">Konfirmasi Password</label>
-            <input type="password" name="konfir" required>
             <?php if (isset($password_mismatch_error)) { ?>
                 <span style="color: red;"><?php echo $password_mismatch_error; ?></span>
             <?php } ?>
-            <button type="submit">Daftar</button>
+            <button type="submit" name="submit">Login</button>
+            <script src="https://kit.fontawesome.com/d9b2e6872d.js" crossorigin="anonymous"></script>
         </form>
      </div>
     <div class="alternative">
-        <p>Sudah punya akun? <a href="login.php">Masuk</a></p>
+        <p>Belum punya akun? <a href="register.php"><b>Click Here!</b></a></p>
     </div>
     </div>
-        <script src="https://kit.fontawesome.com/d9b2e6872d.js" crossorigin="anonymous"></script>
-
+        
     <div class="footers">
-            <img src="register gambar Shikigami.png" alt="gambar mc" class="kiri_bawah">
-            <img src="Register gambar Light.png" alt="gambar shinagami" class="kanan_bawah">
+            <img src="login L berdiri.png" alt="gambar mc" class="kiri_bawah">
+            <img src="login L duduk.png" alt="gambar shinagami" class="kanan_bawah">
     </div>
 </body>
 
