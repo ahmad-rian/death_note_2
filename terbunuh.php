@@ -114,7 +114,7 @@
     <img src="homepage 1 buku death note.png" alt="fotobuku" class="buku">
     <div class="container">
         <div>
-            <video id="bgVideo" autoplay controls>
+            <video id="bgVideo" controls>
             <source src="bgVideo.mp4" type="video/mp4">
             </video>
         </div>

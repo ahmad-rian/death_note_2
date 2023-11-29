@@ -12,15 +12,25 @@ if (isset($_POST['submit'])) {
     $check = mysqli_num_rows($result);
     if ($check > 0) {
         $data = mysqli_fetch_assoc($result);
-        if ($data['level'] == "Administrator") {
+        if ($data['level'] == "admin") {
             $_SESSION['username'] = $username;
-            $_SESSION['level'] = "Administrator";
-            header('Location:index.php');
+            $_SESSION['fullname'] = $data['fullname'];
+            $_SESSION['email'] = $data['email'];
+            $_SESSION['level'] = "admin";
+            header('Location:beranda_admin.php');
         } elseif ($data['level'] == "Guest") {
             $_SESSION['username'] = $username;
+            $_SESSION['fullname'] = $data['fullname'];
+            $_SESSION['email'] = $data['email'];
             $_SESSION['level'] = "Guest";
-            header('Location:index.php');
-        } else {
+            header('Location:beranda_user.php');
+        } elseif ($data['level'] == "jurnal") {
+            $_SESSION['username'] = $username;
+            $_SESSION['fullname'] = $data['fullname'];
+            $_SESSION['email'] = $data['email'];
+            $_SESSION['level'] = "jurnal";
+            header('Location:beranda_jurnal.php');
+        }else {
             if ($password != $konfir) {
                 $password_mismatch_error = "Username atau Password salah";
                 
@@ -48,7 +58,7 @@ if (isset($_POST['submit'])) {
     body {
         font-family: 'Times New Roman', Times, serif;
         background-color: #f4f4f4;
-        background-image: url(Background.png);
+        background-image: url(asset/Background.png);
         color: white;
         background-size: cover;
         background-position: center;
@@ -166,9 +176,9 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <img src="register tulisan death note.png" alt="gambar atas" class="fotoatas">
-    <img src="Login paku kanan.png" alt="gambar samping" class="pakukanan">
-    <img src="Login paku kiri.png" alt="kiri" class="pakukiri">
+    <img src="asset/register tulisan death note.png" alt="gambar atas" class="fotoatas">
+    <img src="asset/Login paku kanan.png" alt="gambar samping" class="pakukanan">
+    <img src="asset/Login paku kiri.png" alt="kiri" class="pakukiri">
     <div class="container">
     <h1>Selamat Datang!</h1>
         <p>Ayo mulai mencari target pembunuhan terbaru</p>
@@ -191,8 +201,8 @@ if (isset($_POST['submit'])) {
     </div>
         
     <div class="footers">
-            <img src="login L berdiri.png" alt="gambar mc" class="kiri_bawah">
-            <img src="login L duduk.png" alt="gambar shinagami" class="kanan_bawah">
+            <img src="asset/login L berdiri.png" alt="gambar mc" class="kiri_bawah">
+            <img src="asset/login L duduk.png" alt="gambar shinagami" class="kanan_bawah">
     </div>
 </body>
 

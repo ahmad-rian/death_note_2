@@ -6,40 +6,39 @@ if (isset($_POST['submit'])) {
     $fullname = $_POST['fullname'];
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = md5($_POST['password']);
+    $old_password = md5($_POST['password']);
     $konfir = md5($_POST['konfir']);
+    $new_password = md5($_POST['new-password']);
 
-    $sql = "SELECT * FROM tbl_user WHERE username = '$username' OR email = '$email'";
+    $sql = "SELECT * FROM tbl_user WHERE username = '$username' AND password = '$old_password'";
     $filter = mysqli_query($conn, $sql);
     $check = mysqli_num_rows($filter);
 
     if ($check > 0) {
-        header('Location:register.php?pesan=eksis');
-    } else {
-        if ($password != $konfir) {
+        if ($old_password != $konfir) {
             $password_mismatch_error = "Password tidak sama";
         } else {
-            $defaultImage = 'noprofil.jpg';
-            $query = "INSERT INTO tbl_user(fullname, username, email, password, level, image) VALUES ('$fullname', '$username', '$email', '$password', 'Guest', '$defaultImage')";
-            
-            $result = mysqli_query($conn, $query);
+            // Update the password in the database
+            $update_query = "UPDATE tbl_user SET password = '$new_password' WHERE username = '$username'";
+            $update_result = mysqli_query($conn, $update_query);
 
-            if ($result) {
-                header('Location:login.php?pesan=berhasil');
+            if ($update_result) {
+                header('Location:profil_user.php?pesan=password berhasil diubah');
             } else {
-                echo "Gagal menyimpan data. Pesan kesalahan: " . mysqli_error($koneksi);
+                echo "Error updating password: " . mysqli_error($conn);
             }
         }
+    } else {
+        header('Location:profil_user.php?pesan=eksis');
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Register</title>
+    <title>New Password</title>
     <style>
         * {
             margin: 0;
@@ -183,27 +182,26 @@ if (isset($_POST['submit'])) {
     <div class="container">
         <h1>Selamat Datang!</h1>
         <p>Ayo mulai mencari target pembunuhan terbaru</p>
-        <div class="register">
-            <form name=" login-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="login-form" enctype="multipart/form-data">
+        <div class="ubah">
+            <form name=" login-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="login-form">
                 <label for="name">Username</label>
-                <input type="text" name="username" required>
+                <input type="text" name="username" value="<?php echo $_SESSION['username'];?>" required>
                 <label for="name">Nama Lengkap</label>
-                <input type="text" name="fullname" required>
+                <input type="text" name="fullname" value="<?php echo $_SESSION['fullname'];?>" required>
                 <label for="email">Email</label>
-                <input type="email" name="email" required>
-                <label for="password">Password</label>
+                <input type="email" name="email" value="<?php echo $_SESSION['email'];?>" required>
+                <label for="password">Password lama</label>
                 <input type="password" name="password" required>
-                <label for="confirm-password">Konfirmasi Password</label>
+                <label for="confirm-password">Konfirmasi Password lama</label>
                 <input type="password" name="konfir" required>
+                <label for="new-password">Buat Password Baru</label>
+                <input type="password" name="new-password" required>
                 <?php if (isset($password_mismatch_error)) { ?>
                     <span style="color: red;"><?php echo $password_mismatch_error; ?></span>
                 <?php } ?>
-                <button type="submit" name="submit">Daftar</button>
+                <button type="submit" name="submit">Ubah Password</button>
             </form>
 
-        </div>
-        <div class="alternative">
-            <p>Sudah punya akun? <a href="login.php">Masuk</a></p>
         </div>
     </div>
     <script src="https://kit.fontawesome.com/d9b2e6872d.js" crossorigin="anonymous"></script>
