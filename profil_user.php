@@ -319,7 +319,7 @@ if($query){
 <body>
     <div class="header">
         <div><a href="beranda_user.php">Beranda</a></div>
-        <div><a href="merchaindes.php">Merchandise</a></div>
+        <div><a href="merchandise.php">Merchandise</a></div>
         <div><a href="profil_user.php">Profil</a></div>
     </div>
 

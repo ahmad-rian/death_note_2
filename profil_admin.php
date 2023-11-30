@@ -319,7 +319,7 @@ if($query){
 <body>
     <div class="header">
         <div><a href="beranda_user.php">Beranda</a></div>
-        <div><a href="merchaindes.php">Merchandise</a></div>
+        <div><a href="merchandise.php">Merchandise</a></div>
         <div><a href="profil_user.php">Profil</a></div>
         <div><a href="membunuh.php">Kill</a></div>
     </div>
@@ -352,7 +352,7 @@ if($query){
         <div class="kiri">
 
             <table>
-                <form action="ubah_password.php" name="user-profile" method="POST">
+                <form action="ubah_password_admin.php" name="user-profile" method="POST">
                     <tr>
                         <td><label for="username">Username</label> <br>
                             <input type="text" name="username" value="<?php echo $_SESSION['username']; ?>" required readonly>

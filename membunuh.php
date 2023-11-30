@@ -147,45 +147,6 @@
         </div>
     </div>
     <footer>
-    <h2>Berita Terkini</h2>
-    <div id="news-carousel">
-        <!-- Berita 1 -->
-        <div class="news-item">
-            <h3>Judul Berita 1</h3>
-            <p>Deskripsi berita 1.</p>
-        </div>
-
-        <!-- Berita 2 -->
-        <div class="news-item">
-            <h3>Judul Berita 2</h3>
-            <p>Deskripsi berita 2.</p>
-        </div>
-
-        <!-- Berita 3 -->
-        <div class="news-item">
-            <h3>Judul Berita 3</h3>
-            <p>Deskripsi berita 3.</p>
-        </div>
-        <div class="news-item">
-            <h3>Judul Berita 1</h3>
-            <p>Deskripsi berita 1.</p>
-        </div>
-
-        <!-- Berita 2 -->
-        <div class="news-item">
-            <h3>Judul Berita 2</h3>
-            <p>Deskripsi berita 2.</p>
-        </div>
-
-        <!-- Berita 3 -->
-        <div class="news-item">
-            <h3>Judul Berita 3</h3>
-            <p>Deskripsi berita 3.</p>
-        </div>
-
-
-        <!-- Tambahkan lebih banyak berita sesuai kebutuhan -->
-    </div>
 
     <script>
         const newsCarousel = document.getElementById('news-carousel');

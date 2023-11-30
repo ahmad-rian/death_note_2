@@ -214,10 +214,9 @@
 
 <body>
   <div class="header">
-    <div><a href="beranda_admin.php">Beranda</a></div>
+    <div><a href="beranda_user.php">Beranda</a></div>
     <div><a href="merchandise.php">Merchandise</a></div>
-    <div><a href="profil_admin.php">Profil</a></div>
-    <div><a href="membunuh.php">Kill</a></div>
+    <div><a href="profil_user.php">Profil</a></div>
   </div>
 
   <div class="nonton">
@@ -289,13 +288,6 @@
     </div>
     <div class="kanan">
       <img src="asset/shinikagami.jpeg" alt="" width="500px" height="500px">
-    </div>
-  </div>
-
-  <div class="footer">
-    <h3>Berita Terbaru</h3>
-    <div class="carousel">
-
     </div>
   </div>
 

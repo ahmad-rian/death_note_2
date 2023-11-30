@@ -214,8 +214,8 @@
 
 <body>
   <div class="header">
-    <div><a href="beranda.php">Beranda</a></div>
-    <div><a href="merchaindes.php">Merchandise</a></div>
+    <div><a href="beranda_user.php">Beranda</a></div>
+    <div><a href="merchandise.php">Merchandise</a></div>
     <div><a href="profil_user.php">Profil</a></div>
   </div>
 
@@ -291,12 +291,7 @@
     </div>
   </div>
 
-  <div class="footer">
-    <h3>Berita Terbaru</h3>
-    <div class="carousel">
-
-    </div>
-  </div>
+  <a href="berita_user.php" color="white"> view more</a>
 </body>
 
 </html>
